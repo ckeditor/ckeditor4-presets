@@ -34,4 +34,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Considering that the basic setup doesn't provide pasting cleanup features,
 	// it's recommended to force everything to be plain text.
 	config.forcePasteAsPlainText = true;
+
+	// Let's have it basic on dialogs as well.
+	config.removeDialogTabs = 'link:advanced';
 };
