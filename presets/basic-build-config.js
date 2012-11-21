@@ -11,7 +11,8 @@ var CKBUILDER_CONFIG = {
 		'.gitattributes',
 		'README.md',
 		'.mailmap',
-		'.idea'
+		'.idea',
+		'.DS_Store'
 	],
 	plugins: {
 		about: 1,

@@ -6,8 +6,25 @@
 
 set -e
 
-echo "CKBuilder - Builds CKEditor preset releases."
-echo ""
+echo "CKEditor Presets Builder"
+echo "========================"
+
+case $1 in
+	basic) name="Basic" ;;
+	standard) name="Standard" ;;
+	full) name="Full" ;;
+	*)
+		echo "Usage: $0 basic|standard|full" >&2
+		echo ""
+		exit 1
+		;;
+esac
+
+# User the ckeditor-dev commit hash as the revision.
+cd ckeditor/
+rev=`git rev-parse --verify --short HEAD`
+cd ..
+
 
 CKBUILDER_VERSION="1.6"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
@@ -51,50 +68,28 @@ fi
 cd ../..
 
 echo ""
-echo "Deleting releases/..."
-rm -rf releases/
+echo "Copying extra plugins..."
+cp -r plugins/ ckeditor/plugins/
+
 
 echo ""
-echo "Copying extra plugins..."
-
-cp -r plugins/ ckeditor/plugins/
+echo "Deleting build/$1..."
+rm -rf build/$1
 
 
 # Run the builder.
 echo ""
-echo "Building the Basic Preset..."
+echo "Building the '$1' Preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor releases/basic -s --version="4 DEV (Basic)" --build-config presets/basic-build-config.js --overwrite "$@"
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor build/$1 -s --version="4 DEV ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
 
-rm releases/basic/*.gz
-rm releases/basic/*.zip
+rm build/$1/*.gz
+rm build/$1/*.zip
 
-cp presets/basic-ckeditor-config.js releases/basic/ckeditor/config.js
-cp presets/README.md releases/basic/ckeditor/
-
-echo ""
-echo "Building the Standard Preset..."
-
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor releases/standard -s --version="4 DEV (Standard)" --build-config presets/standard-build-config.js --overwrite "$@"
-
-rm releases/standard/*.gz
-rm releases/standard/*.zip
-
-cp presets/standard-ckeditor-config.js releases/standard/ckeditor/config.js
-cp presets/README.md releases/standard/ckeditor/
+cp presets/$1-ckeditor-config.js build/$1/ckeditor/config.js
+cp presets/README.md build/$1/ckeditor/
 
 
-echo ""
-echo "Building the Full Preset..."
-
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor releases/full -s --version="4 DEV (Full)" --build-config presets/full-build-config.js --overwrite "$@"
-
-rm releases/full/*.gz
-rm releases/full/*.zip
-
-cp presets/README.md releases/full/ckeditor/
-
-echo ""
 echo "Removing added plugins..."
 cd ckeditor
 git clean -d -f -f
@@ -102,4 +97,5 @@ cd ..
 
 
 echo ""
-echo "Releases created in the \"releases\" directory."
+echo "Build created into the \"build\" directory."
+echo ""
