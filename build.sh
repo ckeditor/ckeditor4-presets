@@ -50,6 +50,9 @@ else
 fi
 cd ../..
 
+echo ""
+echo "Deleting releases/..."
+rm -rf releases/
 
 echo ""
 echo "Copying extra plugins..."
@@ -67,7 +70,7 @@ rm releases/basic/*.gz
 rm releases/basic/*.zip
 
 cp presets/basic-ckeditor-config.js releases/basic/ckeditor/config.js
-
+cp presets/README.md releases/basic/ckeditor/
 
 echo ""
 echo "Building the Standard Preset..."
@@ -78,6 +81,7 @@ rm releases/standard/*.gz
 rm releases/standard/*.zip
 
 cp presets/standard-ckeditor-config.js releases/standard/ckeditor/config.js
+cp presets/README.md releases/standard/ckeditor/
 
 
 echo ""
@@ -88,6 +92,7 @@ java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor releases/f
 rm releases/full/*.gz
 rm releases/full/*.zip
 
+cp presets/README.md releases/full/ckeditor/
 
 echo ""
 echo "Removing added plugins..."
