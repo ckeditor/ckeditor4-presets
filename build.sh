@@ -14,11 +14,18 @@ case $1 in
 	standard) name="Standard" ;;
 	full) name="Full" ;;
 	*)
-		echo "Usage: $0 basic|standard|full" >&2
+		echo "Usage: $0 basic|standard|full [all]" >&2
 		echo ""
 		exit 1
 		;;
 esac
+
+skip="-s"
+
+if [ "$2" == "all" ]
+then
+	skip=""
+fi
 
 # User the ckeditor-dev commit hash as the revision.
 cd ckeditor/
@@ -81,7 +88,7 @@ rm -rf build/$1
 echo ""
 echo "Building the '$1' Preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor build/$1 -s --version="4 DEV ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor build/$1 $skip --version="4 DEV ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
 
 rm build/$1/*.gz
 rm build/$1/*.zip
