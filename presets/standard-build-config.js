@@ -36,6 +36,7 @@ var CKBUILDER_CONFIG = {
 		pastefromword: 1,
 		pastetext: 1,
 		removeformat: 1,
+		resize: 1,
 		sourcearea: 1,
 		specialchar: 1,
 		stylescombo: 1,
