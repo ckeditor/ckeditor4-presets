@@ -86,7 +86,7 @@ rm -rf build/$1
 
 # Run the builder.
 echo ""
-echo "Building the '$1' Preset..."
+echo "Building the '$1' preset..."
 
 java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor build/$1 $skip --version="4 DEV ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
 
