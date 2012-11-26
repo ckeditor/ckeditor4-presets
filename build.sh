@@ -76,7 +76,7 @@ cd ../..
 
 echo ""
 echo "Copying extra plugins..."
-cp -r plugins/ ckeditor/plugins/
+cp -r plugins/* ckeditor/plugins/
 
 
 echo ""
