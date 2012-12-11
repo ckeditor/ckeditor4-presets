@@ -1,7 +1,7 @@
 CKEditor 4 Presets Builder
 ==========================
 
-This builder is a tool that creates CKEditor release files for the main "preset" configurations officially distributed at <http://ckeditor.com>. It is targeted to the CKEditor core team, to test the preset builds and to update the ckeditor.com website on new releases.
+This builder is a tool that creates CKEditor release files for the main "preset" configurations officially distributed at <http://ckeditor.com>. It is targeted to the CKEditor core team, to test the preset builds, to update the ckeditor.com website on new releases and to generate the [nightly builds](http://nightly.ckeditor.com/).
 
 A preset is a CKEditor configuration for building that includes a specific set of plugins. Currently, there are 3 presets defined: **standard**, **basic** and **full**.
 
