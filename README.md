@@ -35,4 +35,4 @@ Examples:
 	> build.sh standard
 
 	> # Build a "basic" release, including all plugins available.
-	> build.sh standard
+	> build.sh basic all
