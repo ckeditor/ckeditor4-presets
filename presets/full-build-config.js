@@ -56,6 +56,7 @@ var CKBUILDER_CONFIG = {
 		removeformat: 1,
 		resize: 1,
 		save: 1,
+		scayt: 1,
 		selectall: 1,
 		showblocks: 1,
 		showborders: 1,
@@ -69,6 +70,7 @@ var CKBUILDER_CONFIG = {
 		templates: 1,
 		toolbar: 1,
 		undo: 1,
+		wsc: 1,
 		wysiwygarea: 1
 	}
 };
