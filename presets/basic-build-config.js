@@ -24,7 +24,6 @@ var CKBUILDER_CONFIG = {
 		enterkey: 1,
 		entities: 1,
 		link: 1,
-		pastetext: 1,
 		toolbar: 1,
 		undo: 1,
 		wysiwygarea: 1
