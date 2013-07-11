@@ -20,7 +20,7 @@ var CKBUILDER_CONFIG = {
 		clipboard: 1,
 		floatingspace: 1,
 		list: 1,
-		indent: 1,
+		indentlist: 1,
 		enterkey: 1,
 		entities: 1,
 		link: 1,
