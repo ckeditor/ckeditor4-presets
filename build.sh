@@ -33,7 +33,7 @@ rev=`git rev-parse --verify --short HEAD`
 cd ..
 
 
-CKBUILDER_VERSION="1.6"
+CKBUILDER_VERSION="1.7"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 PROGNAME=$(basename $0)
