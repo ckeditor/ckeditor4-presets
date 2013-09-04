@@ -9,6 +9,12 @@ CKEDITOR_VERSION="4.2.1"
 CKBUILDER_VERSION="1.7"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
+if [ "$1" == "-v" ]
+then
+	echo $CKEDITOR_VERSION
+	exit 0
+fi
+
 set -e
 
 echo "CKEditor Presets Builder"
