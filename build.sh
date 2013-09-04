@@ -4,6 +4,11 @@
 
 # Build CKEditor using the default settings (and build.js)
 
+CKEDITOR_VERSION="4.2.1"
+
+CKBUILDER_VERSION="1.7"
+CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
+
 set -e
 
 echo "CKEditor Presets Builder"
@@ -21,20 +26,18 @@ case $1 in
 esac
 
 skip="-s"
+target="build/$CKEDITOR_VERSION/$1"
 
 if [ "$2" == "all" ]
 then
 	skip=""
+	target="$target-all"
 fi
 
 # User the ckeditor-dev commit hash as the revision.
 cd ckeditor/
 rev=`git rev-parse --verify --short HEAD`
 cd ..
-
-
-CKBUILDER_VERSION="1.7"
-CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 PROGNAME=$(basename $0)
 MSG_UPDATE_FAILED="Warning: The attempt to update ckbuilder.jar failed. The existing file will be used."
@@ -80,21 +83,21 @@ cp -r plugins/* ckeditor/plugins/
 
 
 echo ""
-echo "Deleting build/$1..."
-rm -rf build/$1
+echo "Deleting $target..."
+rm -rf $target
 
 
 # Run the builder.
 echo ""
 echo "Building the '$1' preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor build/$1 $skip --version="4.2.1 DEV ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION DEV ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
 
-rm build/$1/*.gz
-rm build/$1/*.zip
+rm $target/*.gz
+rm $target/*.zip
 
-cp presets/$1-ckeditor-config.js build/$1/ckeditor/config.js
-cp presets/README.md build/$1/ckeditor/
+cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
+cp presets/README.md $target/ckeditor/
 
 
 echo "Removing added plugins..."
