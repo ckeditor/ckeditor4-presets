@@ -4,14 +4,16 @@
 
 # Build CKEditor using the default settings (and build.js)
 
-CKEDITOR_VERSION="4.2.1"
+CKEDITOR_VERSION="4.2.1 DEV"
 
 CKBUILDER_VERSION="1.7"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
+versionFolder="${CKEDITOR_VERSION// /-}"
+
 if [ "$1" == "-v" ]
 then
-	echo $CKEDITOR_VERSION
+	echo $versionFolder
 	exit 0
 fi
 
@@ -32,7 +34,7 @@ case $1 in
 esac
 
 skip="-s"
-target="build/$CKEDITOR_VERSION/$1"
+target="build/$versionFolder/$1"
 
 if [ "$2" == "all" ]
 then
@@ -97,7 +99,7 @@ rm -rf $target
 echo ""
 echo "Building the '$1' preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION DEV ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
 
 rm $target/*.gz
 rm $target/*.zip
