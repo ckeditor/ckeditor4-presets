@@ -4,7 +4,7 @@
 
 # Build CKEditor using the default settings (and build.js)
 
-CKEDITOR_VERSION="4.3 beta"
+CKEDITOR_VERSION="4.3"
 
 CKBUILDER_VERSION="1.7.1"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
