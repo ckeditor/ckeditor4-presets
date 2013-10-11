@@ -26,6 +26,7 @@ case $1 in
 	basic) name="Basic" ;;
 	standard) name="Standard" ;;
 	full) name="Full" ;;
+	drupal) name="Drupal" ;;
 	*)
 		echo "Usage: $0 basic|standard|full [all]" >&2
 		echo ""
