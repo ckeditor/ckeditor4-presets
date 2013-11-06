@@ -6,7 +6,7 @@
 
 CKEDITOR_VERSION="4.3"
 
-CKBUILDER_VERSION="1.7.1"
+CKBUILDER_VERSION="1.7.2"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 versionFolder="${CKEDITOR_VERSION// /-}"
