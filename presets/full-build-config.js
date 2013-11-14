@@ -43,6 +43,7 @@ var CKBUILDER_CONFIG = {
 		indentblock: 1,
 		indentlist: 1,
 		justify: 1,
+		language: 1,
 		link: 1,
 		list: 1,
 		liststyle: 1,
