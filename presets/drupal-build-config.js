@@ -25,7 +25,8 @@ var CKBUILDER_CONFIG = {
 		'contents.css',
 		'styles.js',
 		'samples',
-		'skins/moono/readme.md'
+		'skins/moono/readme.md',
+		'README.md'
 	],
 	plugins : {
 		'about' : 1,
