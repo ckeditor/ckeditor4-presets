@@ -5,7 +5,7 @@
 
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
-	// For the complete reference:
+	// For complete reference see:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
 	// The toolbar groups arrangement, optimized for a single toolbar row.
@@ -26,9 +26,9 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	// The default plugins included in the basic setup define some buttons that
-	// we don't want too have in a basic editor. We remove them here.
+	// are not needed in a basic editor. They are removed here.
 	config.removeButtons = 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript';
 
-	// Let's have it basic on dialogs as well.
+	// Dialog windows are also simplified.
 	config.removeDialogTabs = 'link:advanced';
 };
