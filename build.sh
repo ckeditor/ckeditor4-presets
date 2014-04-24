@@ -99,7 +99,7 @@ rm -rf $target
 echo ""
 echo "Building the '$1' preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
 
 rm $target/*.gz
 rm $target/*.zip
