@@ -27,7 +27,10 @@ case $1 in
 	standard) name="Standard" ;;
 	full) name="Full" ;;
 	*)
-		echo "Usage: $0 basic|standard|full [all]" >&2
+		echo ""
+		echo "Usage:"
+		echo "$0 -v"
+		echo "$0 basic|standard|full [all] [-t]"
 		echo ""
 		exit 1
 		;;
@@ -50,6 +53,7 @@ cd ..
 PROGNAME=$(basename $0)
 MSG_UPDATE_FAILED="Warning: The attempt to update ckbuilder.jar failed. The existing file will be used."
 MSG_DOWNLOAD_FAILED="It was not possible to download ckbuilder.jar"
+ARGS=" $@ "
 
 function error_exit
 {
@@ -99,7 +103,9 @@ rm -rf $target
 echo ""
 echo "Building the '$1' preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$@"
+JAVA_ARGS=${ARGS// -t / } # Remove -t from arrgs
+
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite "$JAVA_ARGS"
 
 rm $target/*.gz
 rm $target/*.zip
@@ -112,6 +118,21 @@ echo "Removing added plugins..."
 cd ckeditor
 git clean -d -f -f
 cd ..
+
+# Copy and build tests
+if [[ "$ARGS" == *\ \-t\ * ]]; then
+	echo ""
+	echo "Coping tests..."
+
+	cp -r ckeditor/tests $target/ckeditor/tests
+	cp -r ckeditor/package.json $target/ckeditor/package.json
+	cp -r ckeditor/bender.js $target/ckeditor/bender.js
+
+	echo ""
+	echo "Installing tests..."
+
+	(cd $target/ckeditor &&	npm install && bender init)
+fi
 
 
 echo ""
