@@ -9,6 +9,8 @@ CKEDITOR_VERSION="4.5.0 beta"
 CKBUILDER_VERSION="2.0.1"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
+MATHJAX_LIB_PATH="../mathjax/2.2"
+
 versionFolder="${CKEDITOR_VERSION// /-}"
 
 if [ "$1" == "-v" ]
@@ -125,8 +127,20 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	echo "Coping tests..."
 
 	cp -r ckeditor/tests $target/ckeditor/tests
-	cp -r ckeditor/package.json $target/ckeditor/package.json
-	cp -r ckeditor/bender.js $target/ckeditor/bender.js
+	cp ckeditor/package.json $target/ckeditor/package.json
+	cp ckeditor/bender.js $target/ckeditor/bender.js
+
+	echo ""
+	echo "Coping MathJax library..."
+
+	if [ -d "$MATHJAX_LIB_PATH" ]; then
+		mkdir $target/ckeditor/tests/plugins/mathjax/_assets
+		cp -r "$MATHJAX_LIB_PATH" $target/ckeditor/tests/plugins/mathjax/_assets/mathjax
+		echo "" >> $target/ckeditor/bender.js
+		echo "config.mathJaxLibPath = '_assets/mathjax/MathJax.js?config=TeX-AMS_HTML'" >> $target/ckeditor/bender.js
+	else
+		echo "WARNING: No MathJax lib in $MATHJAX_LIB_PATH." >&2
+	fi
 
 	echo ""
 	echo "Installing tests..."
