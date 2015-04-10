@@ -6,7 +6,7 @@
 
 CKEDITOR_VERSION="4.5.0 beta"
 
-CKBUILDER_VERSION="2.0.1"
+CKBUILDER_VERSION="2.1.0"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 MATHJAX_LIB_PATH="../mathjax/2.2"
@@ -124,14 +124,14 @@ cd ..
 # Copy and build tests
 if [[ "$ARGS" == *\ \-t\ * ]]; then
 	echo ""
-	echo "Coping tests..."
+	echo "Copying tests..."
 
 	cp -r ckeditor/tests $target/ckeditor/tests
 	cp ckeditor/package.json $target/ckeditor/package.json
 	cp ckeditor/bender.js $target/ckeditor/bender.js
 
 	echo ""
-	echo "Coping MathJax library..."
+	echo "Copying MathJax library..."
 
 	if [ -d "$MATHJAX_LIB_PATH" ]; then
 		mkdir $target/ckeditor/tests/plugins/mathjax/_assets
