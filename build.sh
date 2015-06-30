@@ -4,6 +4,9 @@
 
 # Build CKEditor using the default settings (and build.js)
 
+# Move to the script directory.
+cd $(dirname $0)
+
 CKEDITOR_VERSION="4.5.0"
 
 CKBUILDER_VERSION="2.1.0"
@@ -67,9 +70,6 @@ function command_exists
 {
 	command -v "$1" > /dev/null 2>&1;
 }
-
-# Move to the script directory.
-cd $(dirname $0)
 
 # Download/update ckbuilder.jar
 mkdir -p ckbuilder/$CKBUILDER_VERSION
