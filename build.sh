@@ -4,10 +4,15 @@
 
 # Build CKEditor using the default settings (and build.js)
 
-CKEDITOR_VERSION="4.4.8"
+# Move to the script directory.
+cd $(dirname $0)
 
-CKBUILDER_VERSION="2.0.1"
+CKEDITOR_VERSION="4.5.0"
+
+CKBUILDER_VERSION="2.1.0"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
+
+MATHJAX_LIB_PATH="../mathjax/2.2"
 
 versionFolder="${CKEDITOR_VERSION// /-}"
 
@@ -66,9 +71,6 @@ function command_exists
 	command -v "$1" > /dev/null 2>&1;
 }
 
-# Move to the script directory.
-cd $(dirname $0)
-
 # Download/update ckbuilder.jar
 mkdir -p ckbuilder/$CKBUILDER_VERSION
 cd ckbuilder/$CKBUILDER_VERSION
@@ -122,11 +124,23 @@ cd ..
 # Copy and build tests
 if [[ "$ARGS" == *\ \-t\ * ]]; then
 	echo ""
-	echo "Coping tests..."
+	echo "Copying tests..."
 
 	cp -r ckeditor/tests $target/ckeditor/tests
-	cp -r ckeditor/package.json $target/ckeditor/package.json
-	cp -r ckeditor/bender.js $target/ckeditor/bender.js
+	cp ckeditor/package.json $target/ckeditor/package.json
+	cp ckeditor/bender.js $target/ckeditor/bender.js
+
+	echo ""
+	echo "Copying MathJax library..."
+
+	if [ -d "$MATHJAX_LIB_PATH" ]; then
+		mkdir $target/ckeditor/tests/plugins/mathjax/_assets
+		cp -r "$MATHJAX_LIB_PATH" $target/ckeditor/tests/plugins/mathjax/_assets/mathjax
+		echo "" >> $target/ckeditor/bender.js
+		echo "config.mathJaxLibPath = '_assets/mathjax/MathJax.js?config=TeX-AMS_HTML';" >> $target/ckeditor/bender.js
+	else
+		echo "WARNING: No MathJax lib in $MATHJAX_LIB_PATH." >&2
+	fi
 
 	echo ""
 	echo "Installing tests..."
