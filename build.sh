@@ -9,7 +9,7 @@ cd $(dirname $0)
 
 CKEDITOR_VERSION="4.5.4"
 
-CKBUILDER_VERSION="2.1.0"
+CKBUILDER_VERSION="2.3.0"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 MATHJAX_LIB_PATH="../mathjax/2.2"
