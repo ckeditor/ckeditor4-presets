@@ -7,7 +7,7 @@
 # Move to the script directory.
 cd $(dirname $0)
 
-CKEDITOR_VERSION="4.5.4"
+CKEDITOR_VERSION="4.5.5"
 
 CKBUILDER_VERSION="2.3.0"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
