@@ -1,0 +1,19 @@
+{
+  "name": "ckeditor-presets",
+  "version": "1.0.0",
+  "description": "custom ckeditor config for Coatue",
+  "main": "dist/ckeditor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coatue/ckeditor-presets.git"
+  },
+  "author": "Albert Wu <albertywu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coatue/ckeditor-presets/issues"
+  },
+  "homepage": "https://github.com/coatue/ckeditor-presets#readme"
+}

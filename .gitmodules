@@ -1,9 +1,3 @@
 [submodule "ckeditor"]
 	path = ckeditor
 	url = git@github.com:ckeditor/ckeditor-dev.git
-[submodule "plugins/wsc"]
-	path = plugins/wsc
-	url = git@github.com:WebSpellChecker/ckeditor-plugin-wsc.git
-[submodule "plugins/scayt"]
-	path = plugins/scayt
-	url = git@github.com:WebSpellChecker/ckeditor-plugin-scayt.git

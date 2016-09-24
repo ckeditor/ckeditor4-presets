@@ -1,38 +1,24 @@
-CKEditor 4 Presets Builder
-==========================
+Forked from https://github.com/ckeditor/ckeditor-presets
 
-This builder is a tool that creates CKEditor release files for the main "preset" configurations officially distributed at <http://ckeditor.com>. It is targeted to the CKEditor core team, to test the preset builds, to update the ckeditor.com website on new releases and to generate the [nightly builds](http://nightly.ckeditor.com/).
+Coatue CKEditor Builder
+========================
 
-A preset is a CKEditor configuration for building that includes a specific set of plugins. Currently, there are 3 presets defined: **standard**, **basic** and **full**.
+### Get latest ckeditor core:
 
-The original source code from the official CKEditor repositories is used for the build.
+> git submodule update --init
 
-## Cloning this Code
+---
 
-To clone this code:
+### Create a new Plugin
 
-	> git clone https://github.com/ckeditor/ckeditor-presets.git
+1. Add your plugin to `/plugins` (see `/plugins/timestamp` for a basic example plugin).
+2. Update `/presets/coatue-build-config.js` to include your fresh plugin.
+3. Build using `./build.sh coatue`. The finished build will be in `/dist`
 
-Then, the registered submodules need to be updated:
+---
 
-	> git submodule update --init
+### Create a new Skin
 
-## Running the Builder
-
-The `build.sh` is the only file you should care about. It downloads CKBuilder, if necessary, and execute the building process.
-
-This is the command syntax:
-
-	> build.sh standard|basic|full [all]
-
-The optional "all" argument tells the builder to include all plugins available in the ckeditor-dev repository, even if they're not included in the preset.
-
-The build will be then created in the `build/[preset name]` folder.
-
-Examples:
-
-	> # Build a "standard" release.
-	> build.sh standard
-
-	> # Build a "basic" release, including all plugins available.
-	> build.sh basic all
+1. Add your skin to `/skins` (see `/skins/coatue` for a basic skin example).
+2. Update `/presets/coatue-build-config.js` to include your fresh skin.
+3. Build using `./build.sh coatue`. The finished build will be in `/dist`
