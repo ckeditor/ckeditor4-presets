@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
+# Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
 # For licensing, see http://ckeditor.com/license
 
 # Build CKEditor using the default settings (and build.js)
@@ -9,7 +9,7 @@ cd $(dirname $0)
 
 CKEDITOR_VERSION="4.6.0"
 
-CKBUILDER_VERSION="2.1.0"
+CKBUILDER_VERSION="2.3.1"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 MATHJAX_LIB_PATH="../mathjax/2.2"
