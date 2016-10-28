@@ -36,6 +36,7 @@ var CKBUILDER_CONFIG = {
 		clipboard: 1,
 		colorbutton: 1,
 		colordialog: 1,
+		copyformatting: 1,
 		contextmenu: 1,
 		dialogadvtab: 1,
 		div: 1,
