@@ -7,7 +7,7 @@
 # Move to the script directory.
 cd $(dirname $0)
 
-CKEDITOR_VERSION="4.5.11"
+CKEDITOR_VERSION="4.6.0"
 
 CKBUILDER_VERSION="2.3.1"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
@@ -135,9 +135,9 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 
 	if [ -d "$MATHJAX_LIB_PATH" ]; then
 		mkdir $target/ckeditor/tests/plugins/mathjax/_assets
-		cp -r "$MATHJAX_LIB_PATH" $target/ckeditor/tests/_assets/mathjax
+		cp -r "$MATHJAX_LIB_PATH" $target/ckeditor/tests/plugins/mathjax/_assets/mathjax
 		echo "" >> $target/ckeditor/bender.js
-		echo "config.mathJaxLibPath = '/tests/_assets/mathjax/MathJax.js?config=TeX-AMS_HTML';" >> $target/ckeditor/bender.js
+		echo "config.mathJaxLibPath = '_assets/mathjax/MathJax.js?config=TeX-AMS_HTML';" >> $target/ckeditor/bender.js
 	else
 		echo "WARNING: No MathJax lib in $MATHJAX_LIB_PATH." >&2
 	fi
