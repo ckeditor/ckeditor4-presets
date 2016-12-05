@@ -31,6 +31,8 @@ case $1 in
 	basic) name="Basic" ;;
 	standard) name="Standard" ;;
 	full) name="Full" ;;
+	# Standard below is used by design.
+        demo) name="Standard";;
 	*)
 		echo ""
 		echo "Usage:"
@@ -112,6 +114,9 @@ java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $s
 rm $target/*.gz
 rm $target/*.zip
 
+if [ -f "presets/$1-contents.css" ]; then
+	cp presets/$1-contents.css $target/ckeditor/contents.css
+fi
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
 cp presets/README.md $target/ckeditor/
 
