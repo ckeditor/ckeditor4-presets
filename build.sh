@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+# Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
 # For licensing, see http://ckeditor.com/license
 
 # Build CKEditor using the default settings (and build.js)
@@ -7,7 +7,7 @@
 # Move to the script directory.
 cd $(dirname $0)
 
-CKEDITOR_VERSION="4.6.1"
+CKEDITOR_VERSION="4.6.2"
 
 CKBUILDER_VERSION="2.3.1"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
@@ -109,10 +109,7 @@ echo "Building the '$1' preset..."
 
 JAVA_ARGS=${ARGS// -t / } # Remove -t from arrgs
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite $JAVA_ARGS
-
-rm $target/*.gz
-rm $target/*.zip
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
 
 if [ -f "presets/$1-contents.css" ]; then
 	cp presets/$1-contents.css $target/ckeditor/contents.css
