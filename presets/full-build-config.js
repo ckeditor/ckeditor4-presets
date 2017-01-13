@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see http://ckeditor.com/license
  */
 
@@ -7,9 +7,11 @@ var CKBUILDER_CONFIG = {
 	skin: 'moono-lisa',
 	ignore: [
 		'bender.js',
+		'bender.ci.js',
 		'.bender',
 		'bender-err.log',
 		'bender-out.log',
+		'.travis.yml',
 		'dev',
 		'.DS_Store',
 		'.editorconfig',

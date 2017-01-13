@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+# Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
 # For licensing, see http://ckeditor.com/license
 
 # Build CKEditor using the default settings (and build.js)
@@ -107,10 +107,7 @@ echo "Building the '$1' preset..."
 
 JAVA_ARGS=${ARGS// -t / } # Remove -t from arrgs
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --overwrite $JAVA_ARGS
-
-rm $target/*.gz
-rm $target/*.zip
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
 
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
 cp presets/README.md $target/ckeditor/
