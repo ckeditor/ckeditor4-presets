@@ -54,7 +54,6 @@ var CKBUILDER_CONFIG = {
 		pastetext: 1,
 		removeformat: 1,
 		resize: 1,
-		scayt: 1,
 		showborders: 1,
 		sourcearea: 1,
 		specialchar: 1,
@@ -65,7 +64,6 @@ var CKBUILDER_CONFIG = {
 		tabletools: 1,
 		toolbar: 1,
 		undo: 1,
-		wsc: 1,
 		wysiwygarea: 1
 	}
 };

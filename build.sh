@@ -28,6 +28,7 @@ echo "CKEditor Presets Builder"
 echo "========================"
 
 case $1 in
+	coatue) name="Coatue" ;;
 	basic) name="Basic" ;;
 	standard) name="Standard" ;;
 	full) name="Full" ;;
@@ -35,7 +36,7 @@ case $1 in
 		echo ""
 		echo "Usage:"
 		echo "$0 -v"
-		echo "$0 basic|standard|full [all] [-t]"
+		echo "$0 coatue|basic|standard|full [all] [-t]"
 		echo ""
 		exit 1
 		;;
@@ -105,6 +106,11 @@ rm -rf $target
 echo ""
 echo "Building the '$1' preset..."
 
+echo "... adding the skins in /skins ..."
+rm -rf ckeditor/skins/coatue
+mkdir ckeditor/skins/coatue
+cp -a skins/. ckeditor/skins/
+
 JAVA_ARGS=${ARGS// -t / } # Remove -t from arrgs
 
 java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
@@ -149,3 +155,6 @@ fi
 echo ""
 echo "Build created into the \"build\" directory."
 echo ""
+
+rm -rf dist/*
+cp -a ${target}/ckeditor/. dist/
