@@ -9,7 +9,7 @@ cd $(dirname $0)
 
 CKEDITOR_VERSION="4.7.1"
 
-# User the ckeditor-dev commit hash as the revision.
+# Use the ckeditor-dev commit hash as the revision.
 cd ckeditor/
 rev=`git rev-parse --verify --short HEAD`
 cd ..
