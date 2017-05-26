@@ -9,6 +9,11 @@ cd $(dirname $0)
 
 CKEDITOR_VERSION="4.7.1"
 
+# User the ckeditor-dev commit hash as the revision.
+cd ckeditor/
+rev=`git rev-parse --verify --short HEAD`
+cd ..
+
 CKBUILDER_VERSION="2.3.1"
 CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
@@ -49,11 +54,6 @@ then
 	skip=""
 	target="$target-all"
 fi
-
-# User the ckeditor-dev commit hash as the revision.
-cd ckeditor/
-rev=`git rev-parse --verify --short HEAD`
-cd ..
 
 PROGNAME=$(basename $0)
 MSG_UPDATE_FAILED="Warning: The attempt to update ckbuilder.jar failed. The existing file will be used."
