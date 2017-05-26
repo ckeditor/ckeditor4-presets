@@ -10,7 +10,7 @@ cd $(dirname $0)
 # Use the ckeditor-dev commit hash as the revision.
 cd ckeditor/
 rev=`git rev-parse --verify --short HEAD`
-CKEDITOR_VERSION=`npm show ckeditor-dev version`
+CKEDITOR_VERSION=`node -pe "require('./package.json').version"`
 cd ..
 
 CKBUILDER_VERSION="2.3.1"
