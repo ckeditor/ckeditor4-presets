@@ -131,7 +131,7 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 
 	if [ -d "$MATHJAX_LIB_PATH" ]; then
 		mkdir $target/ckeditor/tests/plugins/mathjax/_assets
-		cp -r "$MATHJAX_LIB_PATH" $target/ckeditor/tests/plugins/mathjax/_assets/mathjax
+		cp -R "$MATHJAX_LIB_PATH" $target/ckeditor/tests/plugins/mathjax/_assets/mathjax
 		echo "" >> $target/ckeditor/bender.js
 		echo "config.mathJaxLibPath = '/tests/plugins/mathjax/_assets/mathjax/MathJax.js?config=TeX-AMS_HTML';" >> $target/ckeditor/bender.js
 	else
