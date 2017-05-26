@@ -93,11 +93,7 @@ cd ../..
 
 echo ""
 echo "Copying extra plugins..."
-if [ "$(uname)" == "Darwin" ]; then
-	cp -R plugins/ ckeditor/plugins/
-else
-	cp -r plugins/* ckeditor/plugins/
-fi
+cp -R plugins/* ckeditor/plugins/
 
 echo ""
 echo "Deleting $target..."
@@ -126,11 +122,7 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	echo ""
 	echo "Copying tests..."
 
-	if [ "$(uname)" == "Darwin" ]; then
-		cp -R ckeditor/tests $target/ckeditor/tests
-	else
-		cp -r ckeditor/tests $target/ckeditor/tests
-	fi
+	cp -R ckeditor/tests $target/ckeditor/tests
 	cp ckeditor/package.json $target/ckeditor/package.json
 	cp ckeditor/bender.js $target/ckeditor/bender.js
 
