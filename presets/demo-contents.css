@@ -7,10 +7,10 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	font-style: normal;
 	font-weight: 300;
 	src:
-		url('../../fonts/roboto/Roboto-Light.woff2') format('woff2'),
-		url('../../fonts/roboto/Roboto-Light.woff') format('woff'),
-		url('../../fonts/roboto/Roboto-Light.ttf') format('ttf'),
-		url('../../fonts/roboto/Roboto-Light.eot') format('eot');
+		url('../../../fonts/roboto/Roboto-Light.woff2') format('woff2'),
+		url('../../../fonts/roboto/Roboto-Light.woff') format('woff'),
+		url('../../../fonts/roboto/Roboto-Light.ttf') format('ttf'),
+		url('../../../fonts/roboto/Roboto-Light.eot') format('eot');
 }
 
 @font-face {
@@ -18,10 +18,10 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	font-style: normal;
 	font-weight: 400;
 	src:
-		url('../../fonts/roboto/Roboto-Regular.woff2') format('woff2'),
-		url('../../fonts/roboto/Roboto-Regular.woff') format('woff'),
-		url('../../fonts/roboto/Roboto-Regular.ttf') format('ttf'),
-		url('../../fonts/roboto/Roboto-Regular.eot') format('eot');
+		url('../../../fonts/roboto/Roboto-Regular.woff2') format('woff2'),
+		url('../../../fonts/roboto/Roboto-Regular.woff') format('woff'),
+		url('../../../fonts/roboto/Roboto-Regular.ttf') format('ttf'),
+		url('../../../fonts/roboto/Roboto-Regular.eot') format('eot');
 }
 
 @font-face {
@@ -29,10 +29,10 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	font-style: normal;
 	font-weight: 500;
 	src:
-		url('../../fonts/roboto/Roboto-Medium.woff2') format('woff2'),
-		url('../../fonts/roboto/Roboto-Medium.woff') format('woff'),
-		url('../../fonts/roboto/Roboto-Medium.ttf') format('ttf'),
-		url('../../fonts/roboto/Roboto-Medium.eot') format('eot');
+		url('../../../fonts/roboto/Roboto-Medium.woff2') format('woff2'),
+		url('../../../fonts/roboto/Roboto-Medium.woff') format('woff'),
+		url('../../../fonts/roboto/Roboto-Medium.ttf') format('ttf'),
+		url('../../../fonts/roboto/Roboto-Medium.eot') format('eot');
 }
 
 @font-face {
@@ -40,10 +40,10 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	font-style: normal;
 	font-weight: 700;
 	src:
-		url('../../fonts/roboto/Roboto-Bold.woff2') format('woff2'),
-		url('../../fonts/roboto/Roboto-Bold.woff') format('woff'),
-		url('../../fonts/roboto/Roboto-Bold.ttf') format('ttf'),
-		url('../../fonts/roboto/Roboto-Bold.eot') format('eot');
+		url('../../../fonts/roboto/Roboto-Bold.woff2') format('woff2'),
+		url('../../../fonts/roboto/Roboto-Bold.woff') format('woff'),
+		url('../../../fonts/roboto/Roboto-Bold.ttf') format('ttf'),
+		url('../../../fonts/roboto/Roboto-Bold.eot') format('eot');
 }
 
 body
