@@ -15,6 +15,7 @@ var CKBUILDER_CONFIG = {
 		'dev',
 		'.DS_Store',
 		'.editorconfig',
+		'.github',
 		'.gitignore',
 		'.gitattributes',
 		'gruntfile.js',
