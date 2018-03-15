@@ -1,6 +1,6 @@
 #!/bin/bash
-# Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
-# For licensing, see http://ckeditor.com/license
+# Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+# For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
 
 # Build CKEditor using the default settings (and build.js)
 
@@ -13,8 +13,8 @@ rev=`git rev-parse --verify --short HEAD`
 CKEDITOR_VERSION=`node -pe "require('./package.json').version"`
 cd ..
 
-CKBUILDER_VERSION="2.3.1"
-CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
+CKBUILDER_VERSION="2.3.2"
+CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 MATHJAX_LIB_PATH="../mathjax/2.2"
 
