@@ -14,7 +14,7 @@ CKEDITOR_VERSION=`node -pe "require('./package.json').version"`
 cd ..
 
 CKBUILDER_VERSION="2.3.2"
-CKBUILDER_URL="http://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
+CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 
 MATHJAX_LIB_PATH="../mathjax/2.2"
 
