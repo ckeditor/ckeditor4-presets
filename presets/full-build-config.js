@@ -26,6 +26,7 @@ var CKBUILDER_CONFIG = {
 		'less',
 		'.mailmap',
 		'node_modules',
+		'.npm',
 		'package.json',
 		'README.md',
 		'tests'
