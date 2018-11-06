@@ -6,6 +6,7 @@
 var CKBUILDER_CONFIG = {
 	skin: 'moono-lisa',
 	ignore: [
+		'assets',
 		'bender.js',
 		'bender.ci.js',
 		'.bender',
