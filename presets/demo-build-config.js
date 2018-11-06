@@ -28,6 +28,7 @@ var CKBUILDER_CONFIG = {
 	skin: 'moono-lisa',
 	preset: 'standard',
 	ignore: [
+		'assets',
 		'.bender',
 		'bender.ci.js',
 		'bender.js',
@@ -37,7 +38,7 @@ var CKBUILDER_CONFIG = {
 		'dev',
 		'.DS_Store',
 		'.editorconfig',
-    '.github',
+		'.github',
 		'.gitattributes',
 		'.gitignore',
 		'gruntfile.js',
