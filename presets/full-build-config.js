@@ -69,6 +69,7 @@ var CKBUILDER_CONFIG = {
 		maximize: 1,
 		newpage: 1,
 		pagebreak: 1,
+		pastefromgdocs: 1,
 		pastefromword: 1,
 		pastetext: 1,
 		preview: 1,
