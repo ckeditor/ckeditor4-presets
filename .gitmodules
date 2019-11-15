@@ -1,6 +1,6 @@
 [submodule "ckeditor"]
 	path = ckeditor
-	url = https://github.com/ckeditor/ckeditor-dev.git
+	url = https://github.com/ckeditor/ckeditor4.git
 [submodule "plugins/wsc"]
 	path = plugins/wsc
 	url = https://github.com/WebSpellChecker/ckeditor-plugin-wsc.git
