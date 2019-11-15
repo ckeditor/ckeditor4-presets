@@ -11,7 +11,7 @@ The original source code from the official CKEditor repositories is used for the
 
 To clone this code:
 
-	> git clone https://github.com/ckeditor/ckeditor-presets.git
+	> git clone https://github.com/ckeditor/ckeditor4-presets.git
 
 Then, the registered submodules need to be updated:
 
@@ -25,7 +25,7 @@ This is the command syntax:
 
 	> build.sh standard|basic|full [all]
 
-The optional "all" argument tells the builder to include all plugins available in the ckeditor-dev repository, even if they're not included in the preset.
+The optional "all" argument tells the builder to include all plugins available in the `ckeditor4` repository, even if they're not included in the preset.
 
 The build will be then created in the `build/[preset name]` folder.
 
