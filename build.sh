@@ -7,7 +7,7 @@
 # Move to the script directory.
 cd $(dirname $0)
 
-# Use the ckeditor-dev commit hash as the revision.
+# Use the ckeditor4 commit hash as the revision.
 cd ckeditor/
 rev=`git rev-parse --verify --short HEAD`
 CKEDITOR_VERSION=`node -pe "require('./package.json').version"`
