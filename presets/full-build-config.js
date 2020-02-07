@@ -70,6 +70,7 @@ var CKBUILDER_CONFIG = {
 		newpage: 1,
 		pagebreak: 1,
 		pastefromgdocs: 1,
+		pastefromlibreoffice: 1,
 		pastefromword: 1,
 		pastetext: 1,
 		preview: 1,
