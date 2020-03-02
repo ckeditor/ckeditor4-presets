@@ -33,6 +33,6 @@ before_script:
 
 script:
   - 'BUILD_PATH=0'
-  - 'sh -e ./build.sh full all -t'
+  - 'bash ./build.sh full all -t'
   - 'BUILD_PATH="$(sh -e ./dev/travis/buildpath.sh)"'
   - 'cd $BUILD_PATH && bender run -c bender.ci.js'
