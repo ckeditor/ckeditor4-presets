@@ -35,4 +35,5 @@ script:
   - 'BUILD_PATH=0'
   - 'bash ./build.sh full all -t'
   - 'BUILD_PATH="$(sh -e ./dev/travis/buildpath.sh)"'
+  - 'cp ckeditor/bender.ci.js $BUILD_PATH'
   - 'cd $BUILD_PATH && bender run -c bender.ci.js'
