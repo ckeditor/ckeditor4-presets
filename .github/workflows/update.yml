@@ -1,0 +1,44 @@
+name: Update CKEditor 4 submodule
+
+on:
+  schedule:
+  - cron: "0 0,10,16 * * *"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        branch: [master, major]
+
+    steps:
+      - name: Fetch changes
+        # https://github.com/marketplace/actions/checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Checkout submodules
+        run: |
+          git submodule update --init --recursive
+
+      - name: Bump "ckeditor" submodule
+        run: |
+          cd ckeditor
+          git fetch --all
+          git checkout ${{ matrix.branch }}
+          cd ..
+          if [[ $(git diff origin/${{ matrix.branch }} | wc -c) -ne 0 ]]; then
+            git config --local user.email "ckeditor-bot@cksource.com"
+            git config --local user.name "CKEditor Bot"
+            git add ckeditor
+            git commit -m "Update CKEditor 4 submodule HEAD."
+          fi
+
+      - name: Push changes
+        # https://github.com/marketplace/actions/github-push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ matrix.branch }}
