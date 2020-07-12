@@ -36,12 +36,16 @@ case $1 in
 	standard) name="Standard" ;;
 	full) name="Full" ;;
 	*)
-		echo ""
-		echo "Usage:"
-		echo "$0 -v"
-		echo "$0 basic|standard|full [all] [-t]"
-		echo ""
-		exit 1
+		if [[ -f "presets/$1-build-config.js" && -f "presets/$1-ckeditor-config.js" ]]; then
+			name="${1}"
+		else
+			echo ""
+			echo "Usage:"
+			echo "$0 -v"
+			echo "$0 basic|standard|full [all] [-t]"
+			echo ""
+			exit 1
+		fi
 		;;
 esac
 
