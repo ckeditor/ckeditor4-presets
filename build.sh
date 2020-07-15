@@ -36,12 +36,19 @@ case $1 in
 	standard) name="Standard" ;;
 	full) name="Full" ;;
 	*)
-		echo ""
-		echo "Usage:"
-		echo "$0 -v"
-		echo "$0 basic|standard|full [all] [-t]"
-		echo ""
-		exit 1
+		if [[ -f "presets/$1-build-config.js" && -f "presets/$1-ckeditor-config.js" ]]; then
+			name="${1}"
+		else
+			echo ""
+			echo "Error: Could not find 'presets/$1-build-config.js' or 'presets/$1-ckeditor-config.js' config files."
+			echo ""
+			echo "Usage:"
+			echo "$0 -v"
+			echo "$0 basic|standard|full [all] [-t]"
+			echo "$0 custom_config_name [all] [-t]"
+			echo ""
+			exit 1
+		fi
 		;;
 esac
 
