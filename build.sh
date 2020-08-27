@@ -134,6 +134,20 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	cp ckeditor/bender.js $target/ckeditor/bender.js
 
 	echo ""
+	echo "Copying External Plugins tests..."
+
+	for dir in plugins/*/
+	do
+		dir=${dir%*/}
+		dir=${dir##*/}
+
+		if [ -d "plugins/$dir/tests" ]; then
+			cp -r "plugins/$dir/tests" "$target/ckeditor/plugins/$dir/tests"
+			echo "- copied tests for $dir plugin"
+		fi
+	done
+
+	echo ""
 	echo "Copying MathJax library..."
 
 	if [ -d "$MATHJAX_LIB_PATH" ]; then
