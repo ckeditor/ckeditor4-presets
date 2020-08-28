@@ -143,7 +143,7 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 
 		if [ -d "plugins/$dir/tests" ]; then
 			cp -r "plugins/$dir/tests" "$target/ckeditor/plugins/$dir/tests"
-			echo "- copied tests for $dir plugin"
+			echo "    $dir"
 		fi
 	done
 
