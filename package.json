@@ -1,0 +1,32 @@
+{
+  "name": "ckeditor4-presets",
+  "version": "4.15.0",
+  "description": "CKEditor 4 Presets Builder.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ckeditor4",
+    "ckeditor",
+    "fckeditor",
+    "editor",
+    "wysiwyg",
+    "html",
+    "richtext",
+    "text",
+    "javascript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckeditor/ckeditor4-presets.git"
+  },
+  "author": "CKSource (https://cksource.com/)",
+  "license": "(GPL-2.0-or-later OR LGPL-2.1 OR MPL-1.1)",
+  "bugs": {
+    "url": "https://github.com/ckeditor/ckeditor4-presets/issues"
+  },
+  "homepage": "https://ckeditor.com",
+  "dependencies": {
+    "ckeditor4-plugin-exportpdf": "^1.0.0"
+  }
+}

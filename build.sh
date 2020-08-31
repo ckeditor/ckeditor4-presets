@@ -4,6 +4,18 @@
 
 # Build CKEditor using the default settings (and build.js)
 
+# Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
+echo ""
+echo "Installing NPM dependencies..."
+
+npm i
+
+echo ""
+echo "Copying plugins from NPM directory..."
+echo ""
+
+cp -r  "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+
 # Move to the script directory.
 cd $(dirname $0)
 
@@ -165,6 +177,11 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	(cd $target/ckeditor &&	npm install && bender init)
 fi
 
+# Clean up `plugins` directory from copied NPM plugins.
+echo ""
+echo "Cleaning plugins directory from NPM artifacts..."
+
+rm -rf "plugins/exportpdf"
 
 echo ""
 echo "Build created into the \"build\" directory."
