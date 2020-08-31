@@ -36,12 +36,19 @@ case $1 in
 	standard) name="Standard" ;;
 	full) name="Full" ;;
 	*)
-		echo ""
-		echo "Usage:"
-		echo "$0 -v"
-		echo "$0 basic|standard|full [all] [-t]"
-		echo ""
-		exit 1
+		if [[ -f "presets/$1-build-config.js" && -f "presets/$1-ckeditor-config.js" ]]; then
+			name="${1}"
+		else
+			echo ""
+			echo "Error: Could not find 'presets/$1-build-config.js' or 'presets/$1-ckeditor-config.js' config files."
+			echo ""
+			echo "Usage:"
+			echo "$0 -v"
+			echo "$0 basic|standard|full [all] [-t]"
+			echo "$0 custom_config_name [all] [-t]"
+			echo ""
+			exit 1
+		fi
 		;;
 esac
 
@@ -125,6 +132,20 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	cp -r ckeditor/tests $target/ckeditor/tests
 	cp ckeditor/package.json $target/ckeditor/package.json
 	cp ckeditor/bender.js $target/ckeditor/bender.js
+
+	echo ""
+	echo "Copying External Plugins tests..."
+
+	for dir in plugins/*/
+	do
+		dir=${dir%*/}
+		dir=${dir##*/}
+
+		if [ -d "plugins/$dir/tests" ]; then
+			cp -r "plugins/$dir/tests" "$target/ckeditor/plugins/$dir/tests"
+			echo "    $dir"
+		fi
+	done
 
 	echo ""
 	echo "Copying MathJax library..."
