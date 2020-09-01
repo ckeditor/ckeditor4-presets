@@ -28,5 +28,6 @@
   "homepage": "https://ckeditor.com",
   "dependencies": {
     "ckeditor4-plugin-exportpdf": "^1.0.0"
-  }
+  },
+  "private": true
 }
