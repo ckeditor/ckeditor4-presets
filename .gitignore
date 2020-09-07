@@ -1,2 +1,4 @@
 /build
 /ckbuilder
+
+node_modules/
