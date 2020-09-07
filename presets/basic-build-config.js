@@ -28,6 +28,7 @@ var CKBUILDER_CONFIG = {
 		'node_modules',
 		'.npm',
 		'package.json',
+		'package-lock.json',
 		'README.md',
 		'tests'
 	],
