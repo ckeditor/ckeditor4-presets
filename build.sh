@@ -4,6 +4,18 @@
 
 # Build CKEditor using the default settings (and build.js)
 
+# Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
+echo ""
+echo "Installing NPM dependencies..."
+
+npm i
+
+echo ""
+echo "Copying plugins from NPM directory..."
+echo ""
+
+cp -r  "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+
 # Move to the script directory.
 cd $(dirname $0)
 
@@ -38,12 +50,19 @@ case $1 in
 	# Standard below is used by design.
         demo) name="Standard";;
 	*)
-		echo ""
-		echo "Usage:"
-		echo "$0 -v"
-		echo "$0 basic|standard|full [all] [-t]"
-		echo ""
-		exit 1
+		if [[ -f "presets/$1-build-config.js" && -f "presets/$1-ckeditor-config.js" ]]; then
+			name="${1}"
+		else
+			echo ""
+			echo "Error: Could not find 'presets/$1-build-config.js' or 'presets/$1-ckeditor-config.js' config files."
+			echo ""
+			echo "Usage:"
+			echo "$0 -v"
+			echo "$0 basic|standard|full [all] [-t]"
+			echo "$0 custom_config_name [all] [-t]"
+			echo ""
+			exit 1
+		fi
 		;;
 esac
 
@@ -132,6 +151,20 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	cp ckeditor/bender.js $target/ckeditor/bender.js
 
 	echo ""
+	echo "Copying External Plugins tests..."
+
+	for dir in plugins/*/
+	do
+		dir=${dir%*/}
+		dir=${dir##*/}
+
+		if [ -d "plugins/$dir/tests" ]; then
+			cp -r "plugins/$dir/tests" "$target/ckeditor/plugins/$dir/tests"
+			echo "    $dir"
+		fi
+	done
+
+	echo ""
 	echo "Copying MathJax library..."
 
 	if [ -d "$MATHJAX_LIB_PATH" ]; then
@@ -149,6 +182,11 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	(cd $target/ckeditor &&	npm install && bender init)
 fi
 
+# Clean up `plugins` directory from copied NPM plugins.
+echo ""
+echo "Cleaning plugins directory from NPM artifacts..."
+
+rm -rf "plugins/exportpdf"
 
 echo ""
 echo "Build created into the \"build\" directory."
