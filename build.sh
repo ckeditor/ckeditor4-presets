@@ -153,7 +153,7 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 		dir=${dir%*/}
 		dir=${dir##*/}
 
-		if [ -d "plugins/$dir/tests" ]; then
+		if [ -d "plugins/$dir/tests" ] && [ -d "$target/ckeditor/plugins/$dir" ]; then
 			cp -r "plugins/$dir/tests" "$target/ckeditor/plugins/$dir/tests"
 			echo "    $dir"
 		fi
