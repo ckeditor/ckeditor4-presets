@@ -6,17 +6,20 @@
 
 # Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
 if [ "$1" != "-v" ]; then
-  echo ""
-  echo "Installing NPM dependencies..."
+	echo ""
+	echo "Installing NPM dependencies..."
 
-  npm i
+	npm i
 
-  echo ""
-  echo "Copying plugins from NPM directory..."
-  echo ""
+	echo ""
+	echo "Copying plugins from NPM directory..."
+	echo ""
 
-  cp -r  "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+	cp -r "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+	cp -r "node_modules/ckeditor-plugin-scayt" "plugins/scayt"
+	cp -r "node_modules/ckeditor-plugin-wsc" "plugins/wsc"
 fi
+
 
 # Move to the script directory.
 cd $(dirname $0)
@@ -184,6 +187,8 @@ echo ""
 echo "Cleaning plugins directory from NPM artifacts..."
 
 rm -rf "plugins/exportpdf"
+rm -rf "plugins/scayt"
+rm -rf "plugins/wsc"
 
 echo ""
 echo "Build created into the \"build\" directory."
