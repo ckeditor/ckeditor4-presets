@@ -11,6 +11,11 @@ if [ "$1" != "-v" ]; then
 
 	npm i
 
+	if [[ ! -d "plugins" ]]; then
+		echo "Creating plugins directory..."
+		mkdir "plugins"
+	fi
+
 	echo ""
 	echo "Copying plugins from NPM directory..."
 	echo ""
@@ -19,7 +24,6 @@ if [ "$1" != "-v" ]; then
 	cp -r "node_modules/ckeditor-plugin-scayt" "plugins/scayt"
 	cp -r "node_modules/ckeditor-plugin-wsc" "plugins/wsc"
 fi
-
 
 # Move to the script directory.
 cd $(dirname $0)
