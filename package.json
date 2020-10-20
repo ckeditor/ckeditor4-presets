@@ -24,18 +24,9 @@
     "url": "https://github.com/ckeditor/ckeditor4-presets/issues"
   },
   "homepage": "https://ckeditor.com",
-  "scripts": {
-    "install": "napa",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
-    "ckeditor4-plugin-exportpdf": "1.0.0"
-  },
-  "devDependencies": {
-    "napa": "^3.0.0"
-  },
-  "napa": {
-    "ckeditor-plugin-scayt": "https://github.com/WebSpellChecker/ckeditor-plugin-scayt#v5.6.4.0",
-    "ckeditor-plugin-wsc": "https://github.com/WebSpellChecker/ckeditor-plugin-wsc#v5.6.4.0"
+    "ckeditor4-plugin-exportpdf": "1.0.0",
+    "ckeditor-plugin-scayt": "https://github.com/WebSpellChecker/ckeditor-plugin-scayt#release.5.6.4.0",
+    "ckeditor-plugin-wsc": "https://github.com/WebSpellChecker/ckeditor-plugin-wsc#release.5.6.4.0"
   }
 }

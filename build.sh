@@ -190,9 +190,7 @@ fi
 echo ""
 echo "Cleaning plugins directory from NPM artifacts..."
 
-rm -rf "plugins/exportpdf"
-rm -rf "plugins/scayt"
-rm -rf "plugins/wsc"
+rm -rf "plugins"
 
 echo ""
 echo "Build created into the \"build\" directory."
