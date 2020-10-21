@@ -5,30 +5,27 @@
 # Build CKEditor using the default settings (and build.js)
 
 # Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
-echo ""
-echo "Installing NPM dependencies..."
+if [ "$1" != "-v" ]; then
+  echo ""
+  echo "Installing NPM dependencies..."
 
-npm i
+  npm i
 
-echo ""
-echo "Copying plugins from NPM directory..."
-echo ""
+  echo ""
+  echo "Copying plugins from NPM directory..."
+  echo ""
 
-cp -r  "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+  cp -r  "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+fi
 
 # Move to the script directory.
 cd $(dirname $0)
 
 # Use the ckeditor4 commit hash as the revision.
 cd ckeditor/
-rev=`git rev-parse --verify --short HEAD`
-CKEDITOR_VERSION=`node -pe "require('./package.json').version"`
+rev=$(git rev-parse --verify --short HEAD)
+CKEDITOR_VERSION=$(node -pe "require('./package.json').version")
 cd ..
-
-CKBUILDER_VERSION="2.3.2"
-CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
-
-MATHJAX_LIB_PATH="../mathjax/2.2"
 
 versionFolder="${CKEDITOR_VERSION// /-}"
 
@@ -39,6 +36,18 @@ then
 fi
 
 set -e
+
+# Variables
+CKBUILDER_VERSION="2.3.2"
+CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
+MATHJAX_LIB_PATH="../mathjax/2.2"
+
+MSG_UPDATE_FAILED="Warning: The attempt to update ckbuilder.jar failed. The existing file will be used."
+MSG_DOWNLOAD_FAILED="It was not possible to download ckbuilder.jar"
+
+PROGNAME=$(basename "$0")
+ARGS=" $@ "
+JAVA_ARGS=${ARGS// -t / } # Remove -t from args
 
 echo "CKEditor Presets Builder"
 echo "========================"
@@ -72,11 +81,6 @@ then
 	skip=""
 	target="$target-all"
 fi
-
-PROGNAME=$(basename $0)
-MSG_UPDATE_FAILED="Warning: The attempt to update ckbuilder.jar failed. The existing file will be used."
-MSG_DOWNLOAD_FAILED="It was not possible to download ckbuilder.jar"
-ARGS=" $@ "
 
 function error_exit
 {
