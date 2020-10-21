@@ -127,8 +127,6 @@ rm -rf $target
 echo ""
 echo "Building the '$1' preset..."
 
-JAVA_ARGS=${ARGS// -t / } # Remove -t from arrgs
-
 java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
 
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
