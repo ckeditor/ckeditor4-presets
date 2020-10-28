@@ -124,11 +124,9 @@ echo ""
 echo "Copying extra plugins..."
 cp -r plugins/* ckeditor/plugins/
 
-
 echo ""
 echo "Deleting $target..."
 rm -rf $target
-
 
 # Run the builder.
 echo ""
@@ -138,7 +136,6 @@ java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $s
 
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
 cp presets/README.md $target/ckeditor/
-
 
 echo "Removing added plugins..."
 cd ckeditor
