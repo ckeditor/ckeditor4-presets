@@ -4,6 +4,9 @@
 
 # Build CKEditor using the default settings (and build.js)
 
+# Move to the script directory.
+cd $(dirname $0)
+
 # Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
 if [ "$1" != "-v" ]; then
 	echo ""
@@ -24,9 +27,6 @@ if [ "$1" != "-v" ]; then
 	cp -r "node_modules/ckeditor-plugin-scayt" "plugins/scayt"
 	cp -r "node_modules/ckeditor-plugin-wsc" "plugins/wsc"
 fi
-
-# Move to the script directory.
-cd $(dirname $0)
 
 # Use the ckeditor4 commit hash as the revision.
 cd ckeditor/
