@@ -27,6 +27,7 @@ var CKBUILDER_CONFIG = {
 		'.mailmap',
 		'node_modules',
 		'.npm',
+		'.nvmrc',
 		'package.json',
 		'package-lock.json',
 		'README.md',
