@@ -4,22 +4,29 @@
 
 # Build CKEditor using the default settings (and build.js)
 
-# Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
-if [ "$1" != "-v" ]; then
-  echo ""
-  echo "Installing NPM dependencies..."
-
-  npm i
-
-  echo ""
-  echo "Copying plugins from NPM directory..."
-  echo ""
-
-  cp -r  "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
-fi
-
 # Move to the script directory.
 cd $(dirname $0)
+
+# Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
+if [ "$1" != "-v" ]; then
+	echo ""
+	echo "Installing NPM dependencies..."
+
+	npm i
+
+	if [[ ! -d "plugins" ]]; then
+		echo "Creating plugins directory..."
+		mkdir "plugins"
+	fi
+
+	echo ""
+	echo "Copying plugins from NPM directory..."
+	echo ""
+
+	cp -r "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+	cp -r "node_modules/ckeditor-plugin-scayt" "plugins/scayt"
+	cp -r "node_modules/ckeditor-plugin-wsc" "plugins/wsc"
+fi
 
 # Use the ckeditor4 commit hash as the revision.
 cd ckeditor/
@@ -117,11 +124,9 @@ echo ""
 echo "Copying extra plugins..."
 cp -r plugins/* ckeditor/plugins/
 
-
 echo ""
 echo "Deleting $target..."
 rm -rf $target
-
 
 # Run the builder.
 echo ""
@@ -131,7 +136,6 @@ java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $s
 
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
 cp presets/README.md $target/ckeditor/
-
 
 echo "Removing added plugins..."
 cd ckeditor
@@ -183,7 +187,7 @@ fi
 echo ""
 echo "Cleaning plugins directory from NPM artifacts..."
 
-rm -rf "plugins/exportpdf"
+rm -rf "plugins"
 
 echo ""
 echo "Build created into the \"build\" directory."
