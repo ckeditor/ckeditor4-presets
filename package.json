@@ -1,10 +1,8 @@
 {
+  "private": true,
   "name": "ckeditor4-presets",
   "version": "4.15.0",
   "description": "CKEditor 4 Presets Builder.",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "ckeditor4",
     "ckeditor",
@@ -27,7 +25,8 @@
   },
   "homepage": "https://ckeditor.com",
   "dependencies": {
-    "ckeditor4-plugin-exportpdf": "1.0.0"
-  },
-  "private": true
+    "ckeditor4-plugin-exportpdf": "1.0.1",
+    "ckeditor-plugin-scayt": "https://github.com/WebSpellChecker/ckeditor-plugin-scayt#release.5.7.0.0",
+    "ckeditor-plugin-wsc": "https://github.com/WebSpellChecker/ckeditor-plugin-wsc#release.5.7.0.0"
+  }
 }

@@ -4,31 +4,35 @@
 
 # Build CKEditor using the default settings (and build.js)
 
-# Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
-echo ""
-echo "Installing NPM dependencies..."
-
-npm i
-
-echo ""
-echo "Copying plugins from NPM directory..."
-echo ""
-
-cp -r  "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
-
 # Move to the script directory.
 cd $(dirname $0)
 
+# Install NPM deps and move external plugins from `node_modules` to `plugins` directory.
+if [ "$1" != "-v" ]; then
+	echo ""
+	echo "Installing NPM dependencies..."
+
+	npm i
+
+	if [[ ! -d "plugins" ]]; then
+		echo "Creating plugins directory..."
+		mkdir "plugins"
+	fi
+
+	echo ""
+	echo "Copying plugins from NPM directory..."
+	echo ""
+
+	cp -r "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
+	cp -r "node_modules/ckeditor-plugin-scayt" "plugins/scayt"
+	cp -r "node_modules/ckeditor-plugin-wsc" "plugins/wsc"
+fi
+
 # Use the ckeditor4 commit hash as the revision.
 cd ckeditor/
-rev=`git rev-parse --verify --short HEAD`
-CKEDITOR_VERSION=`node -pe "require('./package.json').version"`
+rev=$(git rev-parse --verify --short HEAD)
+CKEDITOR_VERSION=$(node -pe "require('./package.json').version")
 cd ..
-
-CKBUILDER_VERSION="2.3.2"
-CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
-
-MATHJAX_LIB_PATH="../mathjax/2.2"
 
 versionFolder="${CKEDITOR_VERSION// /-}"
 
@@ -39,6 +43,18 @@ then
 fi
 
 set -e
+
+# Variables
+CKBUILDER_VERSION="2.3.2"
+CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
+MATHJAX_LIB_PATH="../mathjax/2.2"
+
+MSG_UPDATE_FAILED="Warning: The attempt to update ckbuilder.jar failed. The existing file will be used."
+MSG_DOWNLOAD_FAILED="It was not possible to download ckbuilder.jar"
+
+PROGNAME=$(basename "$0")
+ARGS=" $@ "
+JAVA_ARGS=${ARGS// -t / } # Remove -t from args
 
 echo "CKEditor Presets Builder"
 echo "========================"
@@ -75,11 +91,6 @@ then
 	target="$target-all"
 fi
 
-PROGNAME=$(basename $0)
-MSG_UPDATE_FAILED="Warning: The attempt to update ckbuilder.jar failed. The existing file will be used."
-MSG_DOWNLOAD_FAILED="It was not possible to download ckbuilder.jar"
-ARGS=" $@ "
-
 function error_exit
 {
 	echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
@@ -115,17 +126,13 @@ echo ""
 echo "Copying extra plugins..."
 cp -r plugins/* ckeditor/plugins/
 
-
 echo ""
 echo "Deleting $target..."
 rm -rf $target
 
-
 # Run the builder.
 echo ""
 echo "Building the '$1' preset..."
-
-JAVA_ARGS=${ARGS// -t / } # Remove -t from arrgs
 
 java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
 
@@ -134,7 +141,6 @@ if [ -f "presets/$1-contents.css" ]; then
 fi
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
 cp presets/README.md $target/ckeditor/
-
 
 echo "Removing added plugins..."
 cd ckeditor
@@ -158,7 +164,7 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 		dir=${dir%*/}
 		dir=${dir##*/}
 
-		if [ -d "plugins/$dir/tests" ]; then
+		if [ -d "plugins/$dir/tests" ] && [ -d "$target/ckeditor/plugins/$dir" ]; then
 			cp -r "plugins/$dir/tests" "$target/ckeditor/plugins/$dir/tests"
 			echo "    $dir"
 		fi
@@ -186,7 +192,7 @@ fi
 echo ""
 echo "Cleaning plugins directory from NPM artifacts..."
 
-rm -rf "plugins/exportpdf"
+rm -rf "plugins"
 
 echo ""
 echo "Build created into the \"build\" directory."
