@@ -37,9 +37,11 @@ Examples:
 	> # Build a "basic" release, including all plugins available.
 	> build.sh basic all
 
-## Custom presets
+## Creating Custom Presets
 
-Apart from using predefined presets, you can create custom preset manually and use it with `build.sh` script. As an example, let's create preset including basic configuration with [Editor Placeholder](https://ckeditor.com/cke4/addon/editorplaceholder) plugin.
+Apart from using predefined presets, you can create a custom preset manually and use it with `build.sh` script. As an example, let's create a preset including basic configuration with [Editor Placeholder](https://ckeditor.com/cke4/addon/editorplaceholder) plugin.
+
+### 1. Adding build configuration file
 
 Create builder configuration file at `presets/custom-build-config.js`:
 
@@ -92,6 +94,8 @@ var CKBUILDER_CONFIG = {
 };
 ```
 
+### 2. Adding editor configuration file
+
 Create editor configuration file at `presets/custom-ckeditor-config.js`:
 
 ```js
@@ -125,7 +129,9 @@ CKEDITOR.editorConfig = function( config ) {
 };
 ```
 
-Then, run `build.sh` file:
+### 3. Building custom preset
+
+Run `build.sh` file:
 
 	> # Build a custom "custom" preset.
 	> build.sh custom
