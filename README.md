@@ -36,3 +36,96 @@ Examples:
 
 	> # Build a "basic" release, including all plugins available.
 	> build.sh basic all
+
+## Custom presets
+
+Apart from using predefined presets, you can create custom preset manually and use it with `build.sh` script. As an example, let's create preset including basic configuration with [Editor Placeholder](https://ckeditor.com/cke4/addon/editorplaceholder) plugin.
+
+Create builder configuration file at `presets/custom-build-config.js`:
+
+```js
+var CKBUILDER_CONFIG = {
+	skin: 'moono-lisa',
+	ignore: [
+		'bender.js',
+		'bender.ci.js',
+		'.bender',
+		'bender-err.log',
+		'bender-out.log',
+		'.travis.yml',
+		'dev',
+		'.DS_Store',
+		'.editorconfig',
+		'.github',
+		'.gitignore',
+		'.gitattributes',
+		'gruntfile.js',
+		'.idea',
+		'.jscsrc',
+		'.jshintignore',
+		'.jshintrc',
+		'less',
+		'.mailmap',
+		'node_modules',
+		'.npm',
+		'.nvmrc',
+		'package.json',
+		'package-lock.json',
+		'README.md',
+		'tests'
+	],
+	plugins: {
+		about: 1,
+		basicstyles: 1,
+		clipboard: 1,
+		floatingspace: 1,
+		list: 1,
+		indentlist: 1,
+		enterkey: 1,
+		entities: 1,
+		link: 1,
+		editorplaceholder: 1,
+		toolbar: 1,
+		undo: 1,
+		wysiwygarea: 1
+	}
+};
+```
+
+Create editor configuration file at `presets/custom-ckeditor-config.js`:
+
+```js
+CKEDITOR.editorConfig = function( config ) {
+	// The toolbar groups arrangement, optimized for a single toolbar row.
+	config.toolbarGroups = [
+		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
+		{ name: 'forms' },
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+		{ name: 'links' },
+		{ name: 'insert' },
+		{ name: 'styles' },
+		{ name: 'colors' },
+		{ name: 'tools' },
+		{ name: 'others' },
+		{ name: 'about' }
+	];
+
+	// The default plugins included in the basic setup define some buttons that
+	// are not needed in a basic editor. They are removed here.
+	config.removeButtons = 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript';
+
+	// Dialog windows are also simplified.
+	config.removeDialogTabs = 'link:advanced';
+
+	// Finally, configure editor placeholder text.
+	config.editorplaceholder = 'Type something here...';
+};
+```
+
+Then, run `build.sh` file:
+
+	> # Build a custom "custom" preset.
+	> build.sh custom
