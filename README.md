@@ -37,13 +37,13 @@ Examples:
 	> # Build a "basic" release, including all plugins available.
 	> build.sh basic all
 
-## Creating Custom Presets
+## Creating custom Presets
 
-Apart from using predefined presets, you can create a custom preset manually and use it with `build.sh` script. As an example, let's create a preset including basic configuration with [Editor Placeholder](https://ckeditor.com/cke4/addon/editorplaceholder) plugin.
+Apart from using predefined presets, you can create a custom preset manually and use it with the `build.sh` script. As an example, let's create a preset including basic configuration with the [Editor Placeholder](https://ckeditor.com/cke4/addon/editorplaceholder) plugin.
 
-### 1. Adding build configuration file
+### 1. Adding the build configuration file
 
-Create builder configuration file at `presets/custom-build-config.js`:
+Create a builder configuration file at `presets/custom-build-config.js`:
 
 ```js
 var CKBUILDER_CONFIG = {
@@ -94,9 +94,9 @@ var CKBUILDER_CONFIG = {
 };
 ```
 
-### 2. Adding editor configuration file
+### 2. Adding the editor configuration file
 
-Create editor configuration file at `presets/custom-ckeditor-config.js`:
+Create an editor configuration file at `presets/custom-ckeditor-config.js`:
 
 ```js
 CKEDITOR.editorConfig = function( config ) {
@@ -118,7 +118,7 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	// The default plugins included in the basic setup define some buttons that
-	// are not needed in a basic editor. They are removed here.
+	// are not needed in a basic editor. These are removed here.
 	config.removeButtons = 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript';
 
 	// Dialog windows are also simplified.
@@ -129,7 +129,7 @@ CKEDITOR.editorConfig = function( config ) {
 };
 ```
 
-### 3. Building custom preset
+### 3. Building a custom preset
 
 Run `build.sh` file:
 
