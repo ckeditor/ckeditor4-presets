@@ -7,4 +7,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
+
+	// WebSpellChecker Dialog plugin is approaching the end of life
+	// and is disabled by default.
+	config.removePlugins = 'wsc';
 };
