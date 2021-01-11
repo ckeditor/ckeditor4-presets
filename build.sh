@@ -137,6 +137,22 @@ java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $s
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
 cp presets/README.md $target/ckeditor/
 
+# Add WebSpellchecker Dialog plugin to Standard and Full presets, but disabled by default (until EOL 2021/12/31).
+if [ "$2" != "all" ]
+then
+	if [ "$1" == "standard" ] || [ "$1" == "full" ]
+	then
+		cd plugins
+
+		zip -rq wsc.zip wsc
+		java -jar ../ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --preprocess-plugin wsc.zip wsc-minified
+		cp -r wsc-minified "../$target/ckeditor/plugins/wsc"
+
+		cd ..
+	fi
+fi
+
+# Clean up
 echo "Removing added plugins..."
 cd ckeditor
 git clean -d -f -f
