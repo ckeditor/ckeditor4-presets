@@ -26,10 +26,6 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about' }
 	];
 
-	// WebSpellChecker Dialog plugin is approaching the end of life
-	// and is disabled by default.
-	config.removePlugins = 'wsc';
-
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
 	config.removeButtons = 'Underline,Subscript,Superscript';
