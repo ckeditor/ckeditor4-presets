@@ -144,6 +144,11 @@ then
 	then
 		cd plugins
 
+		# Remove unnecessary files.
+		cd wsc
+		rm package.json .gitattributes README.md
+		cd ..
+
 		zip -rq wsc.zip wsc
 		java -jar ../ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --preprocess-plugin wsc.zip wsc-minified
 		cp -r wsc-minified "../$target/ckeditor/plugins/wsc"
