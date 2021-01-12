@@ -82,11 +82,18 @@ esac
 
 skip="-s"
 target="build/$versionFolder/$1"
+require_plugin=""
 
 if [ "$2" == "all" ]
 then
 	skip=""
 	target="$target-all"
+fi
+
+# Add WebSpellchecker Dialog plugin to Standard and Full presets, but disabled by default (until EOL 2021/12/31).
+if [ "$1" == "standard" ] || [ "$1" == "full" ]
+then
+	require_plugin="-r wsc"
 fi
 
 function error_exit
@@ -132,32 +139,11 @@ rm -rf $target
 echo ""
 echo "Building the '$1' preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip $require_plugin --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
 
 cp presets/$1-ckeditor-config.js $target/ckeditor/config.js
 cp presets/README.md $target/ckeditor/
 
-# Add WebSpellchecker Dialog plugin to Standard and Full presets, but disabled by default (until EOL 2021/12/31).
-if [ "$2" != "all" ]
-then
-	if [ "$1" == "standard" ] || [ "$1" == "full" ]
-	then
-		cd plugins
-
-		# Remove unnecessary files.
-		cd wsc
-		rm package.json .gitattributes README.md
-		cd ..
-
-		zip -rq wsc.zip wsc
-		java -jar ../ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --preprocess-plugin wsc.zip wsc-minified
-		cp -r wsc-minified "../$target/ckeditor/plugins/wsc"
-
-		cd ..
-	fi
-fi
-
-# Clean up
 echo "Removing added plugins..."
 cd ckeditor
 git clean -d -f -f
