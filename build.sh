@@ -45,7 +45,7 @@ fi
 set -e
 
 # Variables
-CKBUILDER_VERSION="2.4.1"
+CKBUILDER_VERSION="2.4.2"
 CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 MATHJAX_LIB_PATH="../mathjax/2.2"
 
