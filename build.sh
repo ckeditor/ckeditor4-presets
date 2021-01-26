@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+# Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
 # For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
 
 # Build CKEditor using the default settings (and build.js)
@@ -45,7 +45,7 @@ fi
 set -e
 
 # Variables
-CKBUILDER_VERSION="2.3.2"
+CKBUILDER_VERSION="2.4.2"
 CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 MATHJAX_LIB_PATH="../mathjax/2.2"
 
@@ -84,11 +84,18 @@ esac
 
 skip="-s"
 target="build/$versionFolder/$1"
+require_plugin=""
 
 if [ "$2" == "all" ]
 then
 	skip=""
 	target="$target-all"
+fi
+
+# Add WebSpellchecker Dialog plugin to Standard and Full presets, but disabled by default (until EOL 2021/12/31).
+if [ "$1" == "standard" ] || [ "$1" == "full" ]
+then
+	require_plugin="-r wsc"
 fi
 
 function error_exit
@@ -134,7 +141,7 @@ rm -rf $target
 echo ""
 echo "Building the '$1' preset..."
 
-java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
+java -jar ckbuilder/$CKBUILDER_VERSION/ckbuilder.jar --build ckeditor $target $skip $require_plugin --version="$CKEDITOR_VERSION ($name)" --revision $rev --build-config presets/$1-build-config.js --no-zip --no-tar --overwrite $JAVA_ARGS
 
 if [ -f "presets/$1-contents.css" ]; then
 	cp presets/$1-contents.css $target/ckeditor/contents.css

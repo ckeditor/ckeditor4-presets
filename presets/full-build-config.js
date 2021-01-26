@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -27,6 +27,7 @@ var CKBUILDER_CONFIG = {
 		'.mailmap',
 		'node_modules',
 		'.npm',
+		'.nvmrc',
 		'package.json',
 		'package-lock.json',
 		'README.md',
@@ -97,7 +98,6 @@ var CKBUILDER_CONFIG = {
 		toolbar: 1,
 		undo: 1,
 		uploadimage: 1,
-		wsc: 1,
 		wysiwygarea: 1
 	}
 };
