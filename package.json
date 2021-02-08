@@ -25,8 +25,8 @@
   },
   "homepage": "https://ckeditor.com",
   "dependencies": {
-    "ckeditor4-plugin-exportpdf": "1.0.2",
     "ckeditor-plugin-scayt": "https://github.com/WebSpellChecker/ckeditor-plugin-scayt#0e3a94a7db581f8773266563ee6c6536cab412a9",
-    "ckeditor-plugin-wsc": "https://github.com/WebSpellChecker/ckeditor-plugin-wsc#fef16e9fcab7cb0ce54ec945e7c4d820a803adb0"
+    "ckeditor-plugin-wsc": "https://github.com/WebSpellChecker/ckeditor-plugin-wsc#fef16e9fcab7cb0ce54ec945e7c4d820a803adb0",
+    "ckeditor4-plugin-exportpdf": "^1.0.3"
   }
 }
