@@ -25,6 +25,10 @@ addons:
   firefox: "latest"
   chrome: stable
 
+install:
+  npm install npm@7 -g
+  npm --version
+
 before_script:
   # Prepare environment.
   - 'npm install benderjs-cli -g'
