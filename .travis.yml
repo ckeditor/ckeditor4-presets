@@ -26,8 +26,8 @@ addons:
   chrome: stable
 
 install:
-  npm install npm@7 -g
-  npm --version
+  - npm install npm@7 -g
+  - npm --version
 
 before_script:
   # Prepare environment.
