@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "ckeditor4-presets",
-  "version": "4.16.2",
+  "version": "4.17.0",
   "description": "CKEditor 4 Presets Builder.",
   "keywords": [
     "ckeditor4",
@@ -19,7 +19,7 @@
     "url": "git+https://github.com/ckeditor/ckeditor4-presets.git"
   },
   "author": "CKSource (https://cksource.com/)",
-  "license": "(GPL-2.0-or-later OR LGPL-2.1 OR MPL-1.1)",
+  "license": "(GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1-or-later)",
   "bugs": {
     "url": "https://github.com/ckeditor/ckeditor4-presets/issues"
   },
@@ -27,6 +27,6 @@
   "dependencies": {
     "ckeditor-plugin-scayt": "https://github.com/WebSpellChecker/ckeditor-plugin-scayt#fcb81290b156fac1cd5e344b7d80e21bfb5177ca",
     "ckeditor-plugin-wsc": "https://github.com/WebSpellChecker/ckeditor-plugin-wsc#4ba7a5fb3529ca372e4ac97aaf1ee338eccec8f7",
-    "ckeditor4-plugin-exportpdf": "1.0.3"
+    "ckeditor4-plugin-exportpdf": "1.0.4"
   }
 }
