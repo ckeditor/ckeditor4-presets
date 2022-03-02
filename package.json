@@ -26,7 +26,6 @@
   "homepage": "https://ckeditor.com",
   "dependencies": {
     "ckeditor-plugin-scayt": "https://github.com/WebSpellChecker/ckeditor-plugin-scayt#fcb81290b156fac1cd5e344b7d80e21bfb5177ca",
-    "ckeditor-plugin-wsc": "https://github.com/WebSpellChecker/ckeditor-plugin-wsc#b496d3996607c3bed26d78bd0ec4597ee80c7ce3",
     "ckeditor4-plugin-exportpdf": "^1.0.6"
   }
 }
