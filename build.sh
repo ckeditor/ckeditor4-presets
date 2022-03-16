@@ -25,7 +25,6 @@ if [ "$1" != "-v" ]; then
 
 	cp -r "node_modules/ckeditor4-plugin-exportpdf" "plugins/exportpdf"
 	cp -r "node_modules/ckeditor-plugin-scayt" "plugins/scayt"
-	cp -r "node_modules/ckeditor-plugin-wsc" "plugins/wsc"
 fi
 
 # Use the ckeditor4 commit hash as the revision.
@@ -97,12 +96,6 @@ if [ "$2" == "all" ]
 then
 	skip=""
 	target="$target-all"
-fi
-
-# Add WebSpellchecker Dialog plugin to Standard and Full presets, but disabled by default (until EOL 2021/12/31).
-if [ "$1" == "standard" ] || [ "$1" == "full" ]
-then
-	require_plugin="-r wsc"
 fi
 
 function error_exit
