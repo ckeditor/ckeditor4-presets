@@ -31,6 +31,12 @@ fi
 cd ckeditor/
 rev=$(git rev-parse --verify --short HEAD)
 CKEDITOR_VERSION=$(node -pe "require('./package.json').version")
+
+# Add suffix for LTS editor version.
+if [[ "$@" == *\-\-lts* ]]; then
+	CKEDITOR_VERSION="${CKEDITOR_VERSION}-lts"
+fi
+
 cd ..
 
 versionFolder="${CKEDITOR_VERSION// /-}"
