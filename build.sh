@@ -50,7 +50,7 @@ fi
 set -e
 
 # Variables
-CKBUILDER_VERSION="2.4.3"
+CKBUILDER_VERSION="2.4.4"
 CKBUILDER_URL="https://download.cksource.com/CKBuilder/$CKBUILDER_VERSION/ckbuilder.jar"
 MATHJAX_LIB_PATH="../mathjax/2.2"
 
@@ -177,6 +177,7 @@ if [[ "$ARGS" == *\ \-t\ * ]]; then
 	cp -r ckeditor/tests $target/ckeditor/tests
 	cp ckeditor/package.json $target/ckeditor/package.json
 	cp ckeditor/bender.js $target/ckeditor/bender.js
+	cp ckeditor/bender.js $target/ckeditor/bender-runner.config.json.js
 
 	echo ""
 	echo "Copying External Plugins tests..."
