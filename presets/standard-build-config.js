@@ -11,6 +11,7 @@ var CKBUILDER_CONFIG = {
 		'.bender',
 		'bender-err.log',
 		'bender-out.log',
+		'bender-runner.config.json',
 		'.travis.yml',
 		'dev',
 		'.DS_Store',

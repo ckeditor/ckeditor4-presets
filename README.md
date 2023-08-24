@@ -1,6 +1,16 @@
 CKEditor 4 Presets Builder
 ==========================
 
+## ⚠️ CKEditor 4: End of Life and Extended Support Model until Dec 2026
+
+CKEditor 4 was launched in 2012 and reached its End of Life (EOL) on June 30, 2023.
+
+A special edition, **[CKEditor 4 LTS](https://ckeditor.com/ckeditor-4-support/)** ("Long Term Support"), is available under commercial terms (["Extended Support Model"](https://ckeditor.com/ckeditor-4-support/)) for anyone looking to **extend the coverage of security updates and critical bug fixes**.
+
+With CKEditor 4 LTS, security updates and critical bug fixes are guaranteed until December 2026.
+
+## About this repository
+
 This builder is a tool that creates CKEditor release files for the main "preset" configurations officially distributed at <https://ckeditor.com/>. It is targeted to the CKEditor core team, to test the preset builds, to update the ckeditor.com website on new releases and to generate the [nightly builds](https://nightly.ckeditor.com/).
 
 A preset is a CKEditor configuration for building that includes a specific set of plugins. Currently, there are 3 presets defined: **standard**, **basic** and **full**.

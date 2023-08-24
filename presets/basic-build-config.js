@@ -8,6 +8,7 @@ var CKBUILDER_CONFIG = {
 	ignore: [
 		'bender.js',
 		'bender.ci.js',
+		'bender-runner.config.json',
 		'.bender',
 		'bender-err.log',
 		'bender-out.log',
